@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head lang="en-US">
+		<meta charset="UTF-8">
+		<meta name="keywords" content="numbers, prime, generate">
+		<meta name="description" content="Prime numbers generator">
+		<meta name="autor" content="Ebriopes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Prime numbers</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="javascript/PrimeNumbers.js"></script>
 	</head>
-	<body class="bkg padre">
-		<div class="fnd">
-			<div class="marc contentSmall">
+	<body class="body">
+		<div class="container">
+			<div class="border">
 				<h1 class="tCenter">First <i><big>N</big></i> prime numbers</h1>
 			</div>
 			<div class="tCenter">
-				<hr class="contentSmall" />
-				<p class="tCenter">This page is for know the first prime numbers.</p>
-				<label>
+				<hr/>
+				<p>This page is for know the first prime numbers.</p>
+				<label class="grid">
 					<label for="selPrime">Generate numbers</label><br>
 					<input type="number" id="selPrime" min=1 value="1">
 					<button onclick="primee()">Run</button>
@@ -21,5 +27,4 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="javascript/PrimeNumbers.js"></script>
 </html>	

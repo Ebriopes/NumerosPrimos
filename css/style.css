@@ -1,6 +1,6 @@
 /*basic style sheet */
 
-.padre {
+.body {
 	justify-content: center;
 	align-items: center;
 	
@@ -10,32 +10,52 @@
 	background-attachment: fixed;
 	background-position: center top;
 }
-div.fnd {
+.container {
 	border-radius: 10px;
 	background-image: url("../img/background-trans.png");
-	max-width: 90%;
+	max-width: 80%;
 	margin-top: 5vh;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 2vh;
 	position: relative;
 }
-div.marc {
+.border {
 	border: 8px dashed teal;
-	border-radius: 15px;
-	margin-top: 10px;
+	border-radius: 14px;
+	max-width: 450px;
+	margin-top: 1vh;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 0 5px 0 5px;
 }
-h1 i {
-	color: teal
+.grid{
+	justify-content: center;
+	display: grid;
+	grid-template-columns: max-content max-content;
+	grid-gap: 5px;
 }
-p {
+/*.grid label{
+	text-align: start;
+}*/
+.tCenter{
+	position: relative;
+	text-align: center;
 	word-wrap: break-word;
 }
-.contentSmall {
-	max-width: 450px
+h1 i {
+	color: teal;
 }
-.tCenter{
-	text-align: center;
+hr {
+	max-width: 450px;
+}
+@media screen and (max-width: 500px){
+	.body{
+		margin: 0;
+	}
+	.container{
+		border-radius: 0;
+		max-width: 100%;
+		margin: 0;
+	}
 }
