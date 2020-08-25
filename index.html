@@ -18,13 +18,14 @@
 			<div class="tCenter">
 				<hr/>
 				<p>This page is for know the first prime numbers.</p>
-				<label class="grid">
-					<label for="selPrime">Generate numbers</label><br>
-					<input type="number" id="selPrime" min=1 value="1">
-					<button onclick="primee()">Run</button>
-				</label>
+				<div class="form">
+					<label for="selPrime">Generate numbers: </label>
+					<input type="number" onmousewheel="setAmount(event)" id="selPrime" min=1 value=1 ><br/>
+					<button id="btn" onclick="primee()">Run</button>
+				</div>
 				<p id="res"></p>
 			</div>
 		</div>
 	</body>
+	<script src="javascript/Events.js"></script>
 </html>	

@@ -29,11 +29,21 @@
 	margin-right: auto;
 	padding: 0 5px 0 5px;
 }
-.grid{
-	justify-content: center;
-	display: grid;
-	grid-template-columns: max-content max-content;
-	grid-gap: 5px;
+.form{
+	max-width: 200px;
+	margin: 0 auto 0 auto;
+}
+.form input{
+	width: 50px;
+}
+button{
+	background-color: teal;
+	border:none;
+	border-radius: 5px;
+	color: whitesmoke;
+	padding: 3px 0;
+	margin-top: 5px;
+	width: 90%;
 }
 /*.grid label{
 	text-align: start;

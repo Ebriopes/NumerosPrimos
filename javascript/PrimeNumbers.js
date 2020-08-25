@@ -1,6 +1,6 @@
 function primee(){
   //establecemos las variables
-  primeS = +document.getElementById('selPrime').value
+  primeS = +document.getElementById('selPrime').value;
   baseData = [2];
   base = 3;
   i=0;
@@ -14,7 +14,7 @@ function primee(){
 	  
     //si escojemos un número mayor a 1
     case (primeS>1):
-      let primNum = ''
+      let primNum = '';
       //bucle que cesa hasta tner la cantidad de digitos especificados
       while(primeS > baseData.length){
         //bucle que cesa cuando un numero no es primo
@@ -34,13 +34,14 @@ function primee(){
         }
         //Aumento en caso de que se pruebe un número no primo
         base +=2;
-      }
+      };
       for (const num in baseData) {
-        primNum += '<label>' + baseData[num] + '</label>  '
-      }
+        primNum += '<label>' + baseData[num] + '</label>  ';
+      };
       document.getElementById('res').innerHTML='The Numbers are: <br> <div>' + primNum + '</div>';
       break;
     default:
       document.getElementById('res').innerHTML='Apparently you didn\'t use numbers. :c';
-  }
-}
+  };
+};
+
