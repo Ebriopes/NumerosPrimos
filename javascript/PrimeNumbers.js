@@ -23,7 +23,7 @@ groupNum = (limit,group) => {
   let primNum = '<div>';
 
   prime(limit).forEach( (element,index) => {
-    if (index % group === 0) primNum += `</div><button class="collapsible" onclick="collapse(this)">${index}-${index+group}</button><div class="content">`;
+    if (index % group === 0) primNum += `</div><button class="collapsible" onclick="collapse(this)">${index+1}-${index+group}</button><div class="content">`;
     primNum += `<span>${element}</span> `;
   });
 
