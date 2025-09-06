@@ -1,27 +1,67 @@
-const input = document.getElementById('selPrime');
-let coll = document.getElementsByClassName("collapsible");
+const form = document.getElementById('paramsForm')
+const input = document.getElementById('amountNums')
+const button = document.getElementById('btn')
+const result = document.getElementById('res')
 
-input.addEventListener('keyup', event =>{
-  if(event.keyCode === 13){
-    event.preventDefault();
-    document.getElementById('btn').click();
-  }
-});
-
-collapse = (element) => {
-	let content = element.nextElementSibling;
-	if (content.style.maxHeight) {
-		content.style.maxHeight = "";
-	} else {
-		content.style.maxHeight = content.scrollHeight + "px";
+try {
+	const primeNumbers = new PrimeNumbers(result);
+	
+	/**
+	 * Define functions
+	 */
+	const updatePrimeNumbers = () => {
+		primeNumbers.limit = input.value;
+	
+		primeNumbers.showNumbers()
 	}
+	
+	const setAmount = (value, increase = true) => {
+			const currentValue = Number(input.value)
+	
+			const newValue = increase ? currentValue + value : currentValue - value
+	
+			if (newValue < 1) return (input.value = 1)
+	
+			input.value = newValue
+	}
+	
+	const wheelController = (event) => {
+			if (event.deltaY < 0) {
+					setAmount(1)
+			} else {
+					setAmount(1, false)
+			}
+	}
+	
+	const inputNumController = (event) => {
+			const allowedValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete']
+	
+			if (!allowedValues.includes(event.key)) {
+					event.preventDefault()
+			}
+	
+			if (event.key === 'Enter') {
+					updatePrimeNumbers()
+			}
+	
+			if (event.key === 'ArrowUp') {
+					setAmount(1)
+			}
+			if (event.key === 'ArrowDown') {
+					setAmount(1, false)
+			}
+	}
+	
+	/**
+	 * Configure event listeners
+	 */
+	form.addEventListener('submit', (event) => {
+			event.preventDefault()
+	})
+	input.addEventListener('keydown', inputNumController)
+	input.addEventListener('wheel', wheelController)
+	button.addEventListener('click', updatePrimeNumbers)
+} catch (error) {
+	console.error("🚀 ~ error:", error)
 }
 
-setAmount = event => {
-	let amount = +input.value;
-	if(event.deltaY > 0) {
-		input.value = amount--
-	} else if(event.deltaY < 0){
-		input.value = amount++
-	}
-}
