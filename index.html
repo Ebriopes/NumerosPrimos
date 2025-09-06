@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head lang="en-US">
-		<meta charset="UTF-8">
-		<meta name="keywords" content="numbers, prime, generate">
-		<meta name="description" content="Prime numbers generator">
-		<meta name="autor" content="Ebriopes">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Prime numbers</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="javascript/PrimeNumbers.js"></script>
-	</head>
-	<body class="body">
-		<div class="container">
-			<div class="border">
-				<h1 class="tCenter">First <i><big>N</big></i> prime numbers</h1>
-			</div>
-			<span class="tCenter">
-				<hr/>
-				<p>This page is for know the first prime numbers.</p>
-				<div class="form">
-					<label for="selPrime">Generate numbers: </label>
-					<input type="number" onmousewheel="setAmount(event)" id="selPrime" min=1 value=1 ><br/>
-					<button id="btn" onclick="printNum()">Run</button>
-				</div>
-				<p id="res"></p>
-			</span>
-		</div>
-	</body>
-	<script src="javascript/Events.js"></script>
-</html>	
+    <head lang="en-US">
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="numbers, prime, generate" />
+        <meta name="description" content="Prime numbers generator" />
+        <meta name="autor" content="Ebriopes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prime numbers</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script
+            type="text/javascript"
+            src="javascript/PrimeNumbers.js"
+        ></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="border">
+                <h1 class="text-center">
+                    First <i><big>N</big></i> prime numbers
+                </h1>
+            </div>
+
+            <hr />
+
+            <p class="description text-center">
+                Write the amount of prime numbers to generate
+            </p>
+
+            <form id="paramsForm" class="form">
+                <label>Amount: 
+                    <input
+                        type="number"
+                        inputmode="numeric"
+                        id="amountNums"
+                        min="1"
+                        value="1"
+                    />
+                </label>
+
+                <button id="btn">Run</button>
+            </form>
+
+            <div id="res"></div>
+        </div>
+    </body>
+    <script src="javascript/Events.js"></script>
+</html>
