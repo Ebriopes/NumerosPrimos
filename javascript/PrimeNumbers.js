@@ -1,68 +1,42 @@
-class PrimeNumbers {
-    currentNumTry = 3
-    primeNumsFound = [2]
+export class PrimeNumbers {
+  #currentLimit = 1
+  #currentNumTry = 3
+  #findPrimeNumbers
+  #primeNumbersFound = [2]
 
-    #containerEl
-    #hostContainer
-    #limit = 1
-    #numberElements = []
+  constructor() {
+    // Generator function to generate the prime numbers
+    this.#findPrimeNumbers = this.#findNextPrimeNumber()
+  }
 
-    constructor(hostContainer) {
-        this.#hostContainer = hostContainer
-        this.#containerEl = document.createElement('div')
+  *#findNextPrimeNumber() {
+    let isPrime
 
-        this.#containerEl.className = 'numbers-container'
+    do {
+      isPrime = this.#primeNumbersFound.every(
+        (num) => this.#currentNumTry % num !== 0
+      )
+
+      if (isPrime) {
+        this.#primeNumbersFound.push(this.#currentNumTry)
+
+        yield this.#currentNumTry
+        isPrime = false
+      }
+
+      this.#currentNumTry += 2
+    } while (true)
+  }
+
+  getXNumbers(amount) {
+    if (amount > this.#currentLimit) {
+      this.#currentLimit = amount
+
+      while (this.#primeNumbersFound.length < this.#currentLimit) {
+        this.#findPrimeNumbers.next().value
+      }
     }
 
-    set limit(num) {
-        this.#limit = num
-    }
-
-    *#findNextPrimeNumber() {
-        let isPrime
-
-        do {
-            isPrime = this.primeNumsFound.every(
-                (num) => this.currentNumTry % num !== 0
-            )
-
-            if (isPrime) {
-                this.primeNumsFound.push(this.currentNumTry)
-
-                yield this.currentNumTry
-                isPrime = false
-            }
-
-            this.currentNumTry += 2
-        } while (true)
-    }
-
-    #createNumberElement(num) {
-        const numContainer = document.createElement('div')
-
-        numContainer.className = 'num-container'
-        numContainer.innerHTML = `<span>${num}</span>`
-
-        return numContainer
-    }
-
-    showNumbers() {
-        if (this.#numberElements.length === 0) {
-            this.#hostContainer.className = 'show'
-            this.#hostContainer.append(this.#containerEl)
-            this.#numberElements.push(this.#createNumberElement(this.primeNumsFound[0]))
-        }
-
-        const findPrimeNumbers = this.#findNextPrimeNumber()
-
-        while (this.primeNumsFound.length <= this.#limit) {
-            const primeNum = findPrimeNumbers.next().value
-            const numEl = this.#createNumberElement(primeNum)
-            
-            this.#numberElements.push(numEl);
-            this.#containerEl.append(numEl)
-
-            setTimeout(() => numEl.className = 'num-container show', 0)
-        }
-    }
+    return this.#primeNumbersFound.slice(0, amount)
+  }
 }

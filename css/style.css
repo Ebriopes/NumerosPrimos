@@ -1,164 +1,179 @@
 /*basic style sheet */
+* {
+  box-sizing: border-box;
+}
+
 html {
-    height: 100dvh;
+  height: 100dvh;
 }
 
 body {
-    display: flex;
-    height: 100%;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
 
-    /*background*/
-    background-image: url('../img/filotax2.gif');
-    background-color: teal;
-    background-attachment: fixed;
-    background-position: center top;
+  /*background*/
+  background-image: url('../img/filotax2.gif');
+  background-color: teal;
+  background-attachment: fixed;
+  background-position: center top;
 }
 
 .container {
-    position: relative;
-    max-width: 40rem;
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    background-color: #fafafacc;
-    box-shadow: 0px 0px 20px gray, 0 0 10px teal;
-    backdrop-filter: blur(4px);
-}
-
-.border {
-    max-width: 450px;
+  position: relative;
+  max-width: 40rem;
+  max-height: 90dvh;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fafafacc;
+  box-shadow: 0px 0px 20px gray, 0 0 10px teal;
+  backdrop-filter: blur(4px);
 }
 
 .description {
-    margin-block: 3rem;
+  margin-block: 1rem;
 }
 
 .form {
-    max-width: 200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 1rem;
+  max-width: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
 }
 
 .form input {
-    width: 3rem;
-    line-height: 2;
-    text-align: center;
-    border-radius: 0.5rem;
-    -moz-appearance: textfield;
+  width: 3rem;
+  line-height: 2;
+  text-align: center;
+  border-radius: 0.5rem;
+  -moz-appearance: textfield;
 }
 
 .form label input[type='number']:hover,
 .form label input[type='number']:focus {
-    /* -moz-appearance: number-input; */
-    -moz-appearance: auto;
+  /* -moz-appearance: number-input; */
+  -moz-appearance: auto;
 }
 
 .form input[type='number']::-webkit-inner-spin-button,
 .form input[type='number']::-webkit-outer-spin-button {
-    /* -webkit-appearance: none; */
+  /* -webkit-appearance: none; */
 }
 
 .collapsible {
-    cursor: pointer;
-    font-size: 15px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .active,
 .collapsible:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
 .content {
-    padding: 0 18px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
 }
 
 button#btn {
-    background-color: teal;
-    border: none;
-    border-radius: 0.5rem;
-    color: whitesmoke;
-    padding: 0.5rem 1rem;
-    width: 8rem;
+  background-color: teal;
+  border: none;
+  border-radius: 0.5rem;
+  color: whitesmoke;
+  padding: 0.5rem 1rem;
+  width: 8rem;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /*.grid label{
 	text-align: start;
 	}*/
 .text-center {
-    position: relative;
-    text-align: center;
-    word-wrap: break-word;
+  position: relative;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 h1 i {
-    color: teal;
+  color: teal;
 }
 
 hr {
-    max-width: 450px;
+  max-width: 450px;
 }
 
 #res.show {
-    margin-block-start: 2rem;
-    padding: 1rem;
-    box-shadow: inset 0 0 10px lightgrey;
+  margin-block-start: 2rem;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 10px lightgrey;
 }
 
 .numbers-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .num-container {
-    overflow: hidden;
-    height: 0;
-    width: 0;
-    padding: 0;
-    border: none;
+  overflow: hidden;
+  height: 0;
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  border: solid 2px teal;
+  text-align: center;
+  box-sizing: content-box;
+
+  transition-property: width, opacity height, border, padding;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  transition-delay: 0, 0, 350ms, 350ms, 350ms;
 }
 
 .num-container.show {
-    height: 1rem;
-    width: 2rem;
-    padding: 0.5rem 1rem;
-    border: solid 2px teal;
-    border-radius: 0.5rem;
-    text-align: center;
-    transition-property: height,width;
-    transition-duration:  2s;
-    transition-timing-function: ease;
+  height: 1rem;
+  width: 2rem;
+  padding: 0.5rem;
+  opacity: 1;
+  border: solid 1px teal;
+  border-radius: 0.5rem;
+
+  transition-property: width;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
 }
 
 @media screen and (max-width: 500px) {
-    body {
-        margin: 0;
-        background-image: url('../img/filotax1.gif');
-    }
-    .container {
-        border-radius: 0.5rem;
-        max-width: 100%;
-        margin: 1rem;
-    }
+  body {
+    margin: 0;
+    background-image: url('../img/filotax1.gif');
+  }
+  .container {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    margin: 1rem;
+  }
 }
