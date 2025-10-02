@@ -1,22 +1,20 @@
-import { NumbersLayout } from './NumbersLayout.js'
-import { PrimeNumbers } from './PrimeNumbers.js'
+import { drawXNumbers } from "./utils/Utils.js";
 
 const form = document.getElementById('paramsForm')
 const input = document.getElementById('amountNums')
 const button = document.getElementById('btn')
-const result = document.getElementById('res')
+const dialog = document.getElementById('modal')
+const dialogButton = document.querySelector('#modal button')
 
 try {
-  const layoutManager = new NumbersLayout(result)
-  const primeNumbers = new PrimeNumbers()
 
   /**
-   * Define functions
+   * Define event listener functions
    */
   const updatePrimeNumbers = () => {
-    const firstNPrimeNumbers = primeNumbers.getXNumbers(Number(input.value))
+    const inputNumber = Number(input.value)
 
-    layoutManager.drawNumbers(firstNPrimeNumbers)
+    drawXNumbers(inputNumber)
   }
 
   const setAmount = (value, increase = true) => {
@@ -38,20 +36,7 @@ try {
   }
 
   const inputNumController = (event) => {
-    const allowedValues = [
-      '0',
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      'Backspace',
-      'Delete',
-    ]
+    const allowedValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete']
 
     if (!allowedValues.includes(event.key)) {
       event.preventDefault()
@@ -78,6 +63,7 @@ try {
   input.addEventListener('keydown', inputNumController)
   input.addEventListener('wheel', wheelController)
   button.addEventListener('click', updatePrimeNumbers)
+  dialogButton.addEventListener('click', () => dialog.close())
 } catch (error) {
   console.error('🚀 ~ error:', error)
 }

@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en-US">
-        <meta charset="UTF-8" />
-        <meta name="keywords" content="numbers, prime, generate" />
-        <meta name="description" content="Prime numbers generator" />
-        <meta name="autor" content="Ebriopes" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Prime numbers</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    </head>
+  <head lang="en-US">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="numbers, prime, generate" />
+    <meta name="description" content="Prime numbers generator" />
+    <meta name="autor" content="Ebriopes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime numbers</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
 
-    <body>
-        <div class="container">
-            <div class="border">
-                <h1 class="text-center">
-                    First <i><big>N</big></i> prime numbers
-                </h1>
-            </div>
+  <body>
+    <div class="container">
+      <div class="border">
+        <h1 class="text-center">
+          First <i><big>N</big></i> prime numbers
+        </h1>
+      </div>
 
-            <hr />
+      <hr />
 
-            <p class="description text-center">
-                Write the amount of prime numbers to generate
-            </p>
+      <p class="description text-center">Write the amount of prime numbers to generate</p>
 
-            <form id="paramsForm" class="form">
-                <label>Amount: 
-                    <input
-                        type="number"
-                        inputmode="numeric"
-                        id="amountNums"
-                        min="1"
-                        value="1"
-                    />
-                </label>
-
-                <button id="btn">Run</button>
-            </form>
-
-            <div id="res"></div>
+      <form id="paramsForm" class="form">
+        <div class="amount-container">
+          <label for="amountNums">Amount:</label>
+          <input type="number" inputmode="numeric" id="amountNums" name="amountNums" min="1" value="1" />
         </div>
-    </body>
-    <script type="module" src="javascript/Events.js"></script>
+
+        <button id="btn">Run</button>
+      </form>
+
+      <div id="res"></div>
+    </div>
+
+    <dialog id="modal">
+      <output id="output"></output>
+      <button autofocus>OK</button>
+    </dialog>
+  </body>
+  <script type="module" src="javascript/Events.js"></script>
 </html>

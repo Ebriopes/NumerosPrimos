@@ -6,7 +6,7 @@ export class NumbersLayout {
   #containerEl
   #hostContainer
   #numberElements
-  #timeUdpateMs = 350
+  #timeUdpateMs = 1000
 
   constructor(hostContainer) {
     this.#hostContainer = hostContainer
@@ -41,15 +41,18 @@ export class NumbersLayout {
       for (const num of numbers) {
         const numContainer = this.#numberElements.get(num)
 
-        if (!this.#containerEl.contains(numContainer)) {
-          if (num !== 2) await timeout(this.#timeUdpateMs)
+        if(this.#containerEl.childElementCount > 1000) break
 
-          this.#containerEl.append(numContainer) // Esto es crucial para que el navegador "piense" y pinte el estado inicial.
+        if (!this.#containerEl.contains(numContainer)) {
+          if (num !== 2) await timeout(this.#timeUdpateMs / numbers.length)
+
+          this.#containerEl.append(numContainer)
 
           //Fuerza un 'reflow' leyendo una propiedad del layout.
           numContainer.offsetHeight
-
           numContainer.classList.add('show')
+
+          this.#containerEl.scrollIntoView({ behavior: 'instant', block: 'end', inline: 'start' })
         }
       }
     } else {
@@ -63,7 +66,7 @@ export class NumbersLayout {
           //Fuerza un 'reflow' leyendo una propiedad del layout.
           numContainer.offsetHeight
 
-          await timeout(this.#timeUdpateMs)
+          await timeout(this.#timeUdpateMs / elementsToRemove.length)
 
           this.#containerEl.removeChild(numContainer)
         }
@@ -81,9 +84,6 @@ export class NumbersLayout {
 
     this.#generateNumbersElements(numbers)
 
-    this.#manageChildren(
-      numbers,
-      numbers.length > this.#containerEl.childElementCount
-    )
+    this.#manageChildren(numbers, numbers.length > this.#containerEl.childElementCount)
   }
 }
